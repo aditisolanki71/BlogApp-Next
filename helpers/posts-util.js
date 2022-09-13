@@ -4,16 +4,19 @@ import matter from "gray-matter";
 //point to overall project not only helper, add posts  which should point
 const postsDirectory = path.join(process.cwd(), "posts")
 
-
-export function getPostData(fn) {
-   const fileName = path.join(postsDirectory, fn);
+export function getPostsFiles() {
+   return fs.readdirSync(postsDirectory);
+}
+export function getPostData(postIdentifier) {
+   const postSlug = postIdentifier.replace(/\.md$/, ''); //remove file extension
+   const filePath = path.join(postsDirectory, `${postSlug}.md`);
    //rread content of file
    //su[ppoert all unicode]
-   const fileContent = fs.readFileSync(fileName,"utf-8");
+   const fileContent = fs.readFileSync(filePath,"utf-8");
    //we pass string,filecontent is string
    //matter will return obj with 2 pproperty ..data as js object and content as string
    const { data, content } = matter(fileContent);
-   const postSlug = fileName.replace(/\.md$/, ''); //remove file extension
+   
    const postData = {
       slug: postSlug,
       ...data,
@@ -24,7 +27,7 @@ export function getPostData(fn) {
 export function getAllPosts() {
    //read block wie data
    //return aray of strings(filename)
-   const postFiles = fs.readdirSync(postsDirectory);
+   const postFiles = getPostsFiles();
    // for(const postFile of postFiles) {
    //    const postData = getPostData(postFile);
    // }

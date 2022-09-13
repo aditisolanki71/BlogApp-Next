@@ -1,9 +1,10 @@
-// /posts/getting-started-with-nextjs
+// http://localhost:3000/posts/getting-started-with-nextjs
+
+import PostContent from "../../components/post-detail/post-content";
+
 function PostDetailPage() {
    return (
-     <div>
-       <p>Post Detail Page</p>
-     </div>
+      <PostContent />
     )
  }
  export default PostDetailPage;

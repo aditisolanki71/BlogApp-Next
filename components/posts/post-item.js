@@ -8,8 +8,7 @@ function PostItem(props) {
       month: 'long',
       year: 'numeric'
    });
-   // const imagePath = `/images/posts/${slug}/${image}`;
-   const imagePath = `/images/posts/getting-started-with-nextjs/${image}`;
+   const imagePath = `/images/posts/${slug}/${image}`;
    console.log("image path is",imagePath);
    const linkPath = `/posts/${slug}`
    return (

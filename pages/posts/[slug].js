@@ -1,10 +1,17 @@
 // http://localhost:3000/posts/getting-started-with-nextjs
-
+import Head from "next/head";
 import PostContent from "../../components/post-detail/post-content";
 import { getPostData , getPostsFiles} from "../../helpers/posts-util"
+import { Fragment } from "react";
 function PostDetailPage(props) {
    return (
+      <Fragment>
+         <Head>
+            <title>{props.post.title}</title>
+            <meta name="description" content={props.post.excerpt} />
+         </Head>
       <PostContent post={props.post}/>
+      </Fragment>
     )
  }
  export function getStaticProps(context) {

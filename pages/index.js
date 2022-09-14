@@ -1,11 +1,16 @@
 // localhost:3000/posts/
 import { Fragment } from "react";
+import Head from "next/head";
 import Hero from "../components/home-page/hero";
 import FeaturedPosts from "../components/home-page/featured-posts";
 import { getFeaturedPosts } from "../helpers/posts-util";
 function HomePage(props) {
   return (
     <Fragment>
+      <Head>
+        <title>Aditi's Blog</title>
+        <meta name="description" content="Post about Programming" />
+      </Head>
       {/* 1)hero ==> welcome screen andd present blog
         2)featured posts -->dummy data */}
       <Hero />

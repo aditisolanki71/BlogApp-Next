@@ -34,15 +34,12 @@ export function getAllPosts() {
    const allPosts = postFiles.map(postFile => {
       return getPostData(postFile);
    });
-   console.log("all posts",allPosts);
    const sortedPosts = allPosts.sort((postA, postB) => postA.date > postB.date ? -1 : 1);
    return sortedPosts;
 }
 
 export function getFeaturedPosts() {
    const allPosts = getAllPosts();
-   console.log("alll",allPosts);
    const featuredPosts = allPosts.filter(post => post.isFeatured);
-   console.log("featured",featuredPosts);
    return featuredPosts;
 }

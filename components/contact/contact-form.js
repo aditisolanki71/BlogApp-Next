@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import classes from './contact-form.module.css';
 import Notification from "../ui/notification";
+import { useRouter } from "next/router";
+
 async function sendContactData(contactDetail) {
    const response = await fetch('/api/contact',{
       method: 'POST',
@@ -16,6 +18,7 @@ async function sendContactData(contactDetail) {
 }
 
 function ContactForm() {
+   const router = useRouter();
    const [enteredEmail,setEnteredEmail] = useState('');
    const [enteredName,setEnteredName] = useState('');
    const [enteredMessage,setEnteredMessage] = useState('');
@@ -44,6 +47,7 @@ function ContactForm() {
          setEnteredMessage('');
          setEnteredEmail('');
          setEnteredName('');
+         router.push('/');
       }
       catch(e) {
          setReqError(e.message);

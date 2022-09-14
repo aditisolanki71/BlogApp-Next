@@ -19,14 +19,13 @@ async function handler(req,res) {
          name,
          message
       };
-      console.log('new msg',newMessage);
       let client;
       try {
          const MONGO_URI = `mongodb+srv://aditi:NruNqUTV1OPMxTvN@cluster0.v364j.mongodb.net/blogApp?retryWrites=true&w=majority`;
          client = await MongoClient.connect(MONGO_URI);
       
       } catch(e) {
-         res.status(500).json({ message: "Failed to connect with Database", message: newMessage });
+         res.status(500).json({ message: e.message || "Failed to connect with Database" });
          return;
       }
       const db = client.db();
@@ -35,7 +34,7 @@ async function handler(req,res) {
          newMessage.id = result.insertedId;
       } catch(e) {
          client.close();
-         res.status(500).json({ message: "storing message failed" });
+         res.status(500).json({ message: e.message || "storing message failed" });
          return;
       }
       client.close();

@@ -8,7 +8,7 @@ function HomePage(props) {
   return (
     <Fragment>
       <Head>
-        <title>Aditi's Blog</title>
+        <title>Aditi Blog</title>
         <meta name="description" content="Post about Programming" />
       </Head>
       {/* 1)hero ==> welcome screen andd present blog

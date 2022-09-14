@@ -20,9 +20,10 @@ async function handler(req,res) {
          message
       };
       let client;
+      const connectionString = `mongodb+srv://${process.env.mongodb_username}:${process.env.mongodb_password}@${process.env.mongodb_clustername}.v364j.mongodb.net/${process.env.mongodb_database}?retryWrites=true&w=majority`;
       try {
-         const MONGO_URI = `mongodb+srv://aditi:NruNqUTV1OPMxTvN@cluster0.v364j.mongodb.net/blogApp?retryWrites=true&w=majority`;
-         client = await MongoClient.connect(MONGO_URI);
+         //const MONGO_URI = `mongodb+srv://aditi:NruNqUTV1OPMxTvN@cluster0.v364j.mongodb.net/blogApp?retryWrites=true&w=majority`;
+         client = await MongoClient.connect(connectionString);
       
       } catch(e) {
          res.status(500).json({ message: e.message || "Failed to connect with Database" });
